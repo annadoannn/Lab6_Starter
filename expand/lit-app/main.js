@@ -2,7 +2,7 @@ import './recipe-card.js';
 
 const form = document.getElementById('new-recipe');
 const main = document.querySelector('main');
-const clearButton = document.getElementById('clear-btn');
+const clearButton = document.querySelector('form button.danger');
 
 /**
  * Save recipes to localStorage as a string
