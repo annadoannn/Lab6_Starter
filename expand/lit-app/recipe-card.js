@@ -49,6 +49,10 @@ export class RecipeCard extends LitElement {
       color: black;
     }
 
+    .title a:visited {
+      color: purple;
+    }
+
     .organization {
       font-size: 12px;
       color: #333;
@@ -56,6 +60,8 @@ export class RecipeCard extends LitElement {
 
     .rating {
       display: flex;
+      color: #70757A;
+      font-size: 12px;
       align-items: center;
       gap: 4px;
       margin: 8px 0;
@@ -74,8 +80,10 @@ export class RecipeCard extends LitElement {
     .ingredients {
       font-size: 12px;
       margin-top: 8px;
+      color: #70757A;
       height: 32px;
       overflow: hidden;
+      text-overflow: ellipsis;
     }
   `;
 
