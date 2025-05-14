@@ -1,39 +1,6 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit@latest?module';
 
-class RecipeCard extends LitElement {
-  static styles = css`
-    :host {
-      font-family: sans-serif;
-      display: block;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 178px;
-      padding: 16px;
-    }
-
-    img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .title {
-      font-weight: bold;
-      margin: 8px 0;
-    }
-
-    .rating {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .ingredients {
-      font-size: 12px;
-      margin-top: 8px;
-    }
-
-  `;
-
+export class RecipeCard extends LitElement {
   static properties = {
     imgSrc: { type: String },
     imgAlt: { type: String },
@@ -42,37 +9,105 @@ class RecipeCard extends LitElement {
     organization: { type: String },
     rating: { type: Number },
     numRatings: { type: Number },
-    lengthTime: { type: String },
-    ingredients: { type: String }
+    time: { type: String },
+    ingredients: { type: String },
   };
+
+  static styles = css`
+    :host {
+      font-family: sans-serif;
+      display: block;
+      width: 178px;
+      max-width: 200px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 8px 0;
+    }
+    
+    img {
+      width: 100%;
+      height: 118px;
+      object-fit: cover;
+    }
+
+    .container {
+      padding: 0 16px 16px 16px;
+    }
+
+    .title {
+      font-size: 16px;
+      margin: 10px 0 4px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .title a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .organization {
+      font-size: 12px;
+      color: #333;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 8px 0;
+    }
+
+    .rating img {
+      height: 16px;
+      width: auto;
+    }
+
+    time {
+      font-size: 12px;
+      color: #70757A;
+    }
+    
+    .ingredients {
+      font-size: 12px;
+      margin-top: 8px;
+      height: 32px;
+      overflow: hidden;
+    }
+  `;
 
   constructor() {
     super();
-    // default values 
-    this.imgSrc = "https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg";
-    this.imgAlt = "Default recipe image";
-    this.titleTxt = "Sample Recipe";
-    this.titleLnk = "https://example.com";
-    this.organization = "Example Org";
-    this.rating = 4;
-    this.numRatings = 123;
-    this.lengthTime = "30 min";
-    this.ingredients = "Salt, Pepper, Olive Oil";
-    }
+    this.imgSrc = '';
+    this.imgAlt = '';
+    this.titleTxt = '';
+    this.titleLnk = '';
+    this.organization = '';
+    this.rating = 0;
+    this.numRatings = 0;
+    this.time = '';
+    this.ingredients = '';
+  }
 
   render() {
     return html`
-      <img src="${this.imgSrc}" alt="${this.imgAlt}">
-      <div class="title">
-        <a href="${this.titleLnk}" target="_blank">${this.titleTxt}</a>
+      <img src="${this.imgSrc}" alt="${this.imgAlt}" />
+      <div class="container">
+        <p class="title">
+          <a href="${this.titleLnk}" target="_blank">${this.titleTxt}</a>
+        </p>
+        <p class="organization">${this.organization}</p>
+        <div class="rating">
+          <span>${this.rating}</span>
+          <img src="./assets/images/icons/${this.rating}-star.svg" alt="${this.rating} stars" />
+          <span>(${this.numRatings})</span>
+        </div>
+        <time>${this.lengthTime}</time>
+        <p class="ingredients">${this.ingredients}</p>
       </div>
-      <div>${this.organization}</div>
-      <div class="rating">
-        <span>${this.rating} ⭐</span>
-        <span>(${this.numRatings})</span>
-      </div>
-      <div><time>${this.lengthTime}</time></div>
-      <div class="ingredients">${this.ingredients}</div>
     `;
   }
 }
