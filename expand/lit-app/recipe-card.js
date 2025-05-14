@@ -17,13 +17,13 @@ export class RecipeCard extends LitElement {
     :host {
       font-family: sans-serif;
       display: block;
-      width: 178px;
-      max-width: 200px;
+      width: 210px;
+      max-width: 225px;
       overflow: hidden;
       border: 1px solid #ccc;
       border-radius: 8px;
-      padding: 16px;
-      margin: 8px 0;
+      margin: 0;
+			padding: 0;
     }
     
     img {
@@ -33,29 +33,35 @@ export class RecipeCard extends LitElement {
     }
 
     .container {
-      padding: 0 16px 16px 16px;
+      padding: 0 16px 0px 16px;
     }
 
     .title {
       font-size: 16px;
-      margin: 10px 0 4px 0;
-      white-space: nowrap;
+      max-height: 2.8em;
+      margin: 10px 1.5px 4px 1.5px;
       overflow: hidden;
-      text-overflow: ellipsis;
+      text-overflow: ellipsis;  
+      text-wrap: none;
     }
 
     .title a {
       text-decoration: none;
-      color: black;
+      color: blue;
     }
 
     .title a:visited {
       color: purple;
     }
 
+    .title a:hover {
+      text-decoration: underline;
+    }
+
     .organization {
       font-size: 12px;
-      color: #333;
+      color: black;
+      padding: 0;
     }
 
     .rating {
@@ -65,25 +71,30 @@ export class RecipeCard extends LitElement {
       align-items: center;
       gap: 4px;
       margin: 8px 0;
+      padding: 0;
     }
 
     .rating img {
       height: 16px;
       width: auto;
+      padding: 0;
     }
 
     time {
       font-size: 12px;
       color: #70757A;
+      padding: 0;
     }
     
     .ingredients {
       font-size: 12px;
       margin-top: 8px;
       color: #70757A;
-      height: 32px;
+      line-height: 1.4em;
+      max-height: 2.8em;
       overflow: hidden;
       text-overflow: ellipsis;
+      padding: 0;
     }
   `;
 
